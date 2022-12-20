@@ -9,6 +9,7 @@ import Carousel from '../components/Carousal'
 export default function Home() {
 
   const [over1100px] = useMediaQuery('(min-width: 1100px)')
+  const [over420px] = useMediaQuery('(min-width: 420px)')
   return (
     <>
       <Head>
@@ -113,8 +114,8 @@ export default function Home() {
 
           <hr style={{ backgroundColor: "#E9E9E9", color: "#E9E9E9", border: "none", height: "60rem", width: "2px" }} />
 
-          <Flex flexFlow="column" gap="4rem" mt="2rem" w="40%">
-            <Text fontSize="3.5rem" fontWeight={700} color="black">
+          <Flex flexFlow="column" gap="4rem" mt="2rem" w={over420px ? "40%" : "70%"}>
+            <Text fontSize={over420px ? "3.5rem" : "2.8rem"} fontWeight={700} color="black">
               Follow us on <span style={{ color: "#FF5C00" }}>Instagram</span> at <span style={{ color: "#FFB800" }}>@ducks_coffee_shop</span>
             </Text>
 
@@ -127,12 +128,12 @@ export default function Home() {
               transition="200ms"
               padding="2rem"
               color="white"
-              fontSize="3rem"
+              fontSize={over420px ? "3rem" : "2.3rem"}
               fontWeight={600}
               outline="none"
               cursor="pointer"
               border="none"
-              w="40rem"
+              w={over420px ? "40rem" : "25rem"}
               h="8rem"
               onClick={() => window.open("https://instagram.com/ducks_coffee_shop/")?.focus()}
             >Open on Instagram</Button>
