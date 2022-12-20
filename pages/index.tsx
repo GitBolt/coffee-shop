@@ -51,8 +51,8 @@ export default function Home() {
 
           <img src="/coffee.png" alt="Coffee" style={{
             display: "block",
-            maxWidth: "50rem",
-            maxHeight: "50rem",
+            maxWidth: "60rem",
+            maxHeight: "60rem",
             width: "auto",
             height: "auto",
             transform: `${over1100px ? '' : "translate(25rem, -25rem)"}`
@@ -121,8 +121,10 @@ export default function Home() {
             <Text fontSize="3rem" fontWeight={500} color="#7C7C7C">To know more and view about us!</Text>
 
             <Button
+              _focus={{ transform: "scale(.95)" }}
               bg="#FFB800"
               borderRadius="2rem"
+              transition="200ms"
               padding="2rem"
               color="white"
               fontSize="3rem"

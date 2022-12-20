@@ -24,6 +24,13 @@ export default function Carousel({
     dotsClass: 'slick-dots',
     responsive: [
       {
+        breakpoint: 5000,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+        },
+      },
+      {
         breakpoint: 2800,
         settings: {
           slidesToShow: 4,
