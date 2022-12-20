@@ -1,13 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
-import { Box, Flex, Text, Button, UnorderedList, ListItem } from '@chakra-ui/react'
+import { Box, Flex, Text, Button, UnorderedList, ListItem, useMediaQuery } from '@chakra-ui/react'
 import { Navbar } from '../components/Navbar'
 import Carousel from '../components/Carousal'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const [over1100px] = useMediaQuery('(min-width: 1100px)')
   return (
     <>
       <Head>
@@ -20,7 +21,7 @@ export default function Home() {
       <Navbar />
       <main style={{ width: "100vw", display: "flex", alignItems: "center", marginTop: "12rem", flexFlow: "column", fontFamily: "Inter", overflowX: "hidden" }}>
 
-        <Flex w="80%" justify="space-between">
+        <Flex w="80%" justify="space-between" flexFlow={over1100px ? "row" : "column"} align="center" gap="4rem">
           <Flex flexFlow="column" gap="2rem">
             <Text fontSize="5rem" fontWeight={700} color="#FF9900" mt="8rem">Ducks Coffee Shop</Text>
             <Text fontSize="2rem" fontWeight={600} color="#FFC737">Cafe in Graz with wide range of drinks and desserts.</Text>
@@ -31,8 +32,9 @@ export default function Home() {
               mt="2rem"
               w="70%"
               padding="3rem 0rem"
+              zIndex={2}
             >
-              <UnorderedList fontSize="2rem" color="#232323" fontWeight={700}>
+              <UnorderedList fontSize="2rem" color="#232323" fontWeight={700} zIndex={2}>
                 <ListItem>Kaffee</ListItem>
                 <ListItem mt="1rem">Vegane Bio Smoothies</ListItem>
                 <ListItem mt="1rem">Limos</ListItem>
@@ -47,12 +49,19 @@ export default function Home() {
             </Box>
           </Flex>
 
-          <img src="/coffee.png" alt="Coffee" />
+          <img src="/coffee.png" alt="Coffee" style={{
+            display: "block",
+            maxWidth: "50rem",
+            maxHeight: "50rem",
+            width: "auto",
+            height: "auto",
+            transform: `${over1100px ? '' : "translate(25rem, -25rem)"}`
+          }} />
         </Flex>
 
         <img style={{ position: "absolute", width: "100vw", transform: "translate(0, -5rem)" }} src="/gradient.png" alt="Gradient" />
 
-        <Flex w="80%" justify="start" mt="12rem" mb="2rem">
+        <Flex w="80%" justify="start" mt={over1100px ? "12rem" : "-25rem"} mb="2rem">
           <Text fontSize="3.5rem" fontWeight={700} color="black" textAlign="start" alignSelf="start">Image Gallery</Text>
         </Flex>
 
@@ -87,7 +96,7 @@ export default function Home() {
           </Box>
         </Flex>
 
-        <Flex mt="7rem" w="80%" gap="2rem" mb="5rem" justify="space-between">
+        <Flex mt="7rem" w="80%" gap="6rem" mb="5rem" flexWrap="wrap">
 
           <Flex boxShadow="-4px 4px 11px rgba(255, 153, 0, 0.27)" bg="white" flexFlow="column" padding="3rem 3rem" gap="2rem" borderRadius="2rem">
             <Text fontSize="3.5rem" fontWeight={700} color="black" textAlign="start" alignSelf="start">Operation Hours</Text>
@@ -102,9 +111,9 @@ export default function Home() {
             </UnorderedList>
           </Flex>
 
-          <hr style={{ backgroundColor: "#E9E9E9", color: "#E9E9E9", border: "none", height: "60rem", width: "12x", transform: "translate(10rem, 0)" }} />
+          <hr style={{ backgroundColor: "#E9E9E9", color: "#E9E9E9", border: "none", height: "60rem", width: "2px" }} />
 
-          <Flex flexFlow="column" gap="4rem" mt="2rem" transform="translate(20rem, 0)">
+          <Flex flexFlow="column" gap="4rem" mt="2rem" w="40%">
             <Text fontSize="3.5rem" fontWeight={700} color="black">
               Follow us on <span style={{ color: "#FF5C00" }}>Instagram</span> at <span style={{ color: "#FFB800" }}>@ducks_coffee_shop</span>
             </Text>
@@ -121,10 +130,10 @@ export default function Home() {
               outline="none"
               cursor="pointer"
               border="none"
-              w="50%"
+              w="40rem"
               h="8rem"
               onClick={() => window.open("https://instagram.com/ducks_coffee_shop/")?.focus()}
-              >Open on Instagram</Button>
+            >Open on Instagram</Button>
           </Flex>
         </Flex>
       </main>
