@@ -1,1 +1,1 @@
-A random coffee shop's website I made for timelapse in 2 hours 2 minutes.
+A random coffee shop's website I made for timelapse in 2 hours 2 minutes. Built in Next.js.
